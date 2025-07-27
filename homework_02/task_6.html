@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>ДЗ_2</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <img src="img/javascript-seeklogo.svg" alt="JavaScript Logo" class="header__logo" />
+                <h1 class="header__title">Курс JavaScript - Домашня робота №2</h1>
+            </div></header>
+        <main class="page">
+             <div class="page__container">
+                <h2 class="page__title">ДЗ Лінійні Обов'язкові > Задача 6</h2>
+                <ul class="page__list list">
+                    <a href="task_0.html" class="list__link">    
+                        <li class="list__item">
+                            <p class="list_text">З клавіатури вводяться вартість товару та кількість одиниць 3 товарів. Обчислити вартість кожного товару окремо та загальну вартість. Вивести чек (як у супермаркеті) використовуючи елементи розмітки. </p>
+                        </li>
+                    </a>
+                    <a href="" class="list__link">    
+                        <li class="list__item">
+                            <h3 class="list__title">Розв'язок</h3>
+                            <p class="list__text result"></p>
+                         </li>
+                    </a>
+                </ul>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+                <p>© 2025 Volodymyr Pasternak | Курс JavaScript - Домашня робота №2</p>
+            </div>    
+        </footer>
+    </div>
+    <script>"use strict"
+        const result = document.querySelector('.result')
+        // 1. Вводимо необхідні дані
+        const firstPoductPrice = parseFloat(prompt('Введіть ввртість товару №1: ', 0))
+        const firstPoductQuantity = parseFloat(prompt('Введіть кількість товару №1: ', 0))
+
+        const secondPoductPrice = parseFloat(prompt('Введіть ввртість товару №2: ', 0))
+        const secondtPoductQuantity = parseFloat(prompt('Введіть кількість товару №2: ', 0))
+
+        const thirdPoductPrice = parseFloat(prompt('Введіть ввртість товару №3: ', 0))
+        const thirdPoductQuantity = parseFloat(prompt('Введіть кількість товару №3: ', 0))
+
+        // 2. Знаходимо результат
+        const firstPoductValue = firstPoductPrice * firstPoductQuantity
+        const secondPoductValue = secondPoductPrice * secondtPoductQuantity
+        const thirdPoductValue = thirdPoductPrice * thirdPoductQuantity
+        const total = firstPoductValue + secondPoductValue + thirdPoductValue
+
+        // 3. Виводимо результат
+        result.innerHTML = (`<table>
+                            <tr><td>Товар №1:</td><td>${firstPoductValue}</td></tr>
+                            <tr><td>Товар №2:</td><td>${secondPoductValue}</td></tr>
+                            <tr><td>Товар №3:</td><td>${thirdPoductValue}</td></tr>
+                            <tr><td colspan="2">-----</td></tr> 
+                            <tr><td>Разом:</td><td>${total}</td></tr>
+                        </table>`)
+    </script>
+</body>
+</html>
