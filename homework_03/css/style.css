@@ -1,0 +1,92 @@
+@import url(reset.css);
+@import url(fonts.css);
+
+body {
+  background-color: #FCFAE7;
+  color: #2c2c2c;
+  font-family: 'Poppins', sans-serif;
+}
+
+.wrapper {
+    overflow: clip;
+    min-height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+[class*='__container'] {
+    max-width: 1230px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+.header {
+    background-color: #FFE44B;
+    padding: 1rem 0;
+    
+}
+
+.header__container{
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+}
+
+.header__logo {
+    width: 7rem;
+}
+
+.header__title {
+    font-size: 2.5rem;
+    margin-bottom:0.5rem;
+    font-weight: 700;
+}
+
+.page {
+    flex-grow: 1;
+}
+.page__container {
+    padding: 2rem 0;
+}
+.page__title {
+    font-size: 1.7rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+.list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+.list__link {
+    border: #FFE44B solid 1px;
+    transition: box-shadow 0.3s ease;
+}
+.list__item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.8rem 1.5rem;
+    background-color: white;
+}
+.list__title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    text-transform: capitalize;
+}
+.list__link:hover {
+    box-shadow: 0 0 0.5rem #D4B830, 0 0 16px #D4B830;
+}
+.list__link:hover .list__item {
+        background-color: #FFE44B;
+}
+.result td {
+    padding: 0.4rem;
+    border: black solid 1px;
+    text-align: center;
+}
+.footer__container {
+    display: flex;
+    justify-content: center;
+    padding: 1.5rem 0;
+}
