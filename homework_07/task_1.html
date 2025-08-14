@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>ДЗ_7</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <img src="img/javascript-seeklogo.svg" alt="JavaScript Logo" class="header__logo" />
+                <h1 class="header__title">Курс JavaScript - Домашня робота №7</h1>
+            </div></header>
+        <main class="page">
+             <div class="page__container">
+                <h2 class="page__title">ДЗ Функції > Задача 1</h2>
+                <ul class="page__list list">
+                    <li class="list__item">
+                        <p class="list_text">Створити функцію, яка за номером місяця повертає пору року, до якої відноситься цей місяць.</p>
+                    </li>  
+                    <li class="list__item">
+                        <h3 class="list__title">Розв'язок</h3>
+                        <p class="list__text result"></p>
+                    </li>
+                </ul>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+                <p>© 2025 Volodymyr Pasternak | Курс JavaScript - Домашня робота №7</p>
+            </div>    
+        </footer>
+    </div>
+    <script>"use strict"
+        const result = document.querySelector('.result')
+        if (confirm('Почати тестування?')) {
+            // 1. Вводимо необхідні дані
+            const monthIndex = parseInt(prompt('Введіть номер місяця: '))
+        
+            // 2. Знаходимо результат
+            function getSeason(i) {
+                let season
+                if (i === 12 || i <= 2) {
+                    season = 'зима'
+                } else if (i <= 5) {
+                    season = 'весна'
+                } else if (i <= 8) {
+                    season = 'літо'
+                } else {
+                    season = 'осінь'
+                }
+                return season
+            }
+            // 3. Виводимо результат
+            result.innerHTML =(`Пора року: ${getSeason(monthIndex)}`)
+        }
+    </script>
+</body>
+</html>

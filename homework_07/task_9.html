@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>ДЗ_7</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <img src="img/javascript-seeklogo.svg" alt="JavaScript Logo" class="header__logo" />
+                <h1 class="header__title">Курс JavaScript - Домашня робота №7</h1>
+            </div></header>
+        <main class="page">
+             <div class="page__container">
+                <h2 class="page__title">ДЗ Функції > Задача 9</h2>
+                <ul class="page__list list">
+                    <li class="list__item">
+                        <p class="list_text"> Створити функцію, яка виводить банер (у функцію передаються: зображення, заголовок та посилання, куди переходимо при кліку на зображення (тег img повине знаходитись у середині тега a: <code>&lta&gt &ltimg src=”шлях”&gt &lt/a&gt</code></p>
+                    </li>  
+                    <li class="list__item">
+                        <h3 class="list__title">Розв'язок</h3>
+                        <p class="list__text result"></p>
+                    </li>
+                </ul>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+                <p>© 2025 Volodymyr Pasternak | Курс JavaScript - Домашня робота №7</p>
+            </div>    
+        </footer>
+    </div>
+    <script>"use strict"
+        const result = document.querySelector('.result')
+        if (confirm('Почати тестування?')) {
+            // 1. Вводимо необхідні дані
+            let imageIndex = parseInt(prompt('Введіть номер зображення:', 1))
+            let title = prompt('Введіть зміст заговку:', 'Привіт')
+            let link = prompt('Введіть адрес посилання:', ' https://edu.fls.guru/js.html')
+            // 2. Знаходимо результат
+            function showBanner(imageIndex, title, link) {
+                return `<a href="${link}"><img src="img/image-${imageIndex}.png" alt="Smile image" class="result__image" /><h1>${title}</h1></a>`
+            }
+            // 3. Виводимо результат
+            result.innerHTML =(`${showBanner(imageIndex, title, link)}`)
+        }
+    </script>
+</body>
+</html>
