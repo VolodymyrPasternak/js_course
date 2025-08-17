@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>ДЗ_8</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <img src="img/javascript-seeklogo.svg" alt="JavaScript Logo" class="header__logo" />
+                <h1 class="header__title">Курс JavaScript - Домашня робота №8</h1>
+            </div></header>
+        <main class="page">
+             <div class="page__container">
+                <h2 class="page__title">ДЗ Функції > Задача 2</h2>
+                <ul class="page__list list">
+                    <li class="list__item">
+                        <p class="list_text">Дано масив, який зберігає кількість відвідувачів магазину протягом тижня. Вивести на екран:
+                                <ul>
+                                    <li>номери днів, протягом яких кількість відвідувачів була меншою за 20;</li>
+                                    <li>номери днів, коли кількість відвідувачів була мінімальною;</li>
+                                    <li>номери днів, коли кількість відвідувачів була максимальною;</li>
+                                    <li>загальну кількість клієнтів у робочі дні та окремо загальну кількість клієнтів на вихідних.</li>
+                                </ul></p>
+                    </li>  
+                    <li class="list__item">
+                        <h3 class="list__title">Розв'язок</h3>
+                        <p class="list__text result"></p>
+                    </li>
+                </ul>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+                <p>© 2025 Volodymyr Pasternak | Курс JavaScript - Домашня робота №8</p>
+            </div>    
+        </footer>
+    </div>
+    <script>"use strict"
+        const result = document.querySelector('.result')
+        if (confirm('Почати тестування?')) {
+            // 1. Вводимо необхідні дані
+            
+            const weeklyVisitorsQuantity = scoresListGenerator()
+
+            function scoresListGenerator(weeklyVisitorsQuantity) {
+                const scores = []
+                for (let i = 0; i < 7; i++) {
+                    scores.push(10+Math.floor(Math.random()*(30-10+1)))
+                }
+                return scores
+            }
+        
+            // 2. Знаходимо результат
+           function daysBelow20(weeklyVisitorsQuantity) {
+                const daysBelow20 = []
+                for (let i = 0; i < weeklyVisitorsQuantity.length; i++) 
+                    if (weeklyVisitorsQuantity[i] < 20) daysBelow20.push(i+1) 
+                return daysBelow20
+           }
+           function minVisitorQuantity(weeklyVisitorsQuantity) {
+                let minVisitorQuantity = weeklyVisitorsQuantity[0]
+                for (let i = 1; i < weeklyVisitorsQuantity.length; i++) {
+                    if (weeklyVisitorsQuantity[i] < minVisitorQuantity) 
+                    minVisitorQuantity = weeklyVisitorsQuantity[i]
+                }
+                return minVisitorQuantity
+           }
+           function maxVisitorQuantity(weeklyVisitorsQuantity) {
+                let maxVisitorQuantity = weeklyVisitorsQuantity[0]
+                for (let i = 1; i < weeklyVisitorsQuantity.length; i++) {
+                    if (weeklyVisitorsQuantity[i] > maxVisitorQuantity) 
+                    maxVisitorQuantity = weeklyVisitorsQuantity[i]
+                }
+                return maxVisitorQuantity
+           }
+           function numVisitorsDuringWorkingDays(weeklyVisitorsQuantity) {
+                let numVisitorsDuringWorkingDays =0
+                for (let i = 0; i < weeklyVisitorsQuantity.length - 2; i++) 
+                    numVisitorsDuringWorkingDays+=weeklyVisitorsQuantity[i]
+                return numVisitorsDuringWorkingDays
+           }
+           function numVisitorsDuringWeekends(weeklyVisitorsQuantity) {
+                return numVisitorsDuringWeekends = weeklyVisitorsQuantity[5] + weeklyVisitorsQuantity[6]
+           }
+            // 3. Виводимо результат
+            result.innerHTML =(`Відвідуваність протягом тижня: ${weeklyVisitorsQuantity}<br>
+                                номери днів, протягом яких кількість відвідувачів була меншою за 20: ${daysBelow20(weeklyVisitorsQuantity)}<br>
+                                номери днів, коли кількість відвідувачів була мінімальною: ${minVisitorQuantity(weeklyVisitorsQuantity)}<br>
+                                номери днів, коли кількість відвідувачів була максимальною: ${maxVisitorQuantity(weeklyVisitorsQuantity)}<br>
+                                загальна кількість клієнтів у робочі дні: ${numVisitorsDuringWorkingDays(weeklyVisitorsQuantity)}<br>
+                                загальна кількість клієнтів на вихідних ${numVisitorsDuringWeekends(weeklyVisitorsQuantity)}`)
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>ДЗ_8</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <img src="img/javascript-seeklogo.svg" alt="JavaScript Logo" class="header__logo" />
+                <h1 class="header__title">Курс JavaScript - Домашня робота №8</h1>
+            </div></header>
+        <main class="page">
+             <div class="page__container">
+                <h2 class="page__title">ДЗ Функції > Задача 7</h2>
+                <ul class="page__list list">
+                    <li class="list__item">
+                        <p class="list_text">Дано послідовність платіжок протягом року. Знайти сумарну кількість грошей за:
+                            <ol>
+                                <li>за весь рік;</li>
+                                <li>у першій половині року;</li>
+                                <li>у другій половині року;</li>
+                                <li>за літо;</li>
+                                <li>за ІІ квартал;</li>
+                                <li>за парні місяці (з парними номерами);</li>
+                                <li>за місяці, які є початковими у сезоні (весна, літо, осінь, зима).</li>
+                            </ol>
+                        </p>
+                    </li>  
+                    <li class="list__item">
+                        <h3 class="list__title">Розв'язок</h3>
+                        <p class="list__text result"></p>
+                    </li>
+                </ul>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+                <p>© 2025 Volodymyr Pasternak | Курс JavaScript - Домашня робота №8</p>
+            </div>    
+        </footer>
+    </div>
+    <script>"use strict"
+        const result = document.querySelector('.result')
+        if (confirm('Почати тестування?')) {
+            // 1. Вводимо необхідні дані
+            function fillReport() {
+                let min = 50
+                let max = 100
+                const report = []
+                for (let i = 0; i < 12; i++) {    
+                    report.push(min+Math.floor(Math.random()*(max-min+1)))
+                }
+                return report
+            }
+            const annualValues = fillReport()
+
+            // 2. Знаходимо результат
+            const annualReport = (annualValues) => {
+                let totalYear = 0
+                let evenMothes = 0
+                for (let i = 0; i < annualValues.length; i++) {
+                    totalYear+=annualValues[i]
+                    if ((i+1)%2 === 0 ) 
+                        evenMothes+=annualValues[i]
+                }
+                let firstHalf = 0
+                for (let i = 0; i < annualValues.length/2; i++)
+                    firstHalf+=annualValues[i]
+                let secondHalf = 0
+                for (let i = annualValues.length/2; i < annualValues.length; i++)
+                    secondHalf+=annualValues[i]
+                let duringSummer = 0
+                for (let i = 5; i < 8; i++) 
+                    duringSummer+=annualValues[i]
+                let secondQuarter = 0
+                for (let i = 3; i < 6; i++) 
+                    secondQuarter+=annualValues[i]
+                let firstMonthOfEachSeason = annualValues[11]
+                for (let i = 2; i < annualValues.length; i+=3) 
+                    firstMonthOfEachSeason += annualValues[i]
+
+                return {totalYear, firstHalf, secondHalf, duringSummer, secondQuarter, evenMothes, firstMonthOfEachSeason}
+            }
+            
+            
+            // 3. Виводимо результат
+            result.innerHTML =(`Сумарна кількість за весь рік: ${annualReport(annualValues).totalYear}<br>
+                                Сумарна кількість у першій половині року: ${annualReport(annualValues).firstHalf} <br>
+                                Сумарна кількість у другій половині року ${annualReport(annualValues).secondHalf}<br>
+                                Сумарна кількість за літо ${annualReport(annualValues).duringSummer}<br>
+                                Сумарна кількість за ІІ квартал ${annualReport(annualValues).secondQuarter}<br>
+                                Сумарна кількість за парні місяці (з парними номерами) ${annualReport(annualValues).evenMothes}<br>
+                                Сумарна кількість за місяці, які є початковими у сезоні (весна, літо, осінь, зима) ${annualReport(annualValues).firstMonthOfEachSeason}`)
+        }
+    </script>
+</body>
+</html>

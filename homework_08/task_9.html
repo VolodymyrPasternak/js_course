@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>ДЗ_8</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <img src="img/javascript-seeklogo.svg" alt="JavaScript Logo" class="header__logo" />
+                <h1 class="header__title">Курс JavaScript - Домашня робота №8</h1>
+            </div></header>
+        <main class="page">
+             <div class="page__container">
+                <h2 class="page__title">ДЗ Функції > Задача 9</h2>
+                <ul class="page__list list">
+                    <li class="list__item">
+                        <p class="list_text">  Морський бій. Користувач вводить кількість клітинок одновимірного масиву та кількість одиночних кораблів. Комп’ютер довільно розміщує ці одиночні кораблі у масиві по один у клітинці (якщо у клітинці 0, то клітинка пуста, якщо 1 – то це означає, що там є корабель. Користувач вводить номер клітинки, куди стріляє. Гра продовжується до тих пір, поки не будуть потоплені усі кораблі.</p>
+                    </li>  
+                    <li class="list__item">
+                        <h3 class="list__title">Розв'язок</h3>
+                        <p class="list__text result"></p>
+                    </li>
+                </ul>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+                <p>© 2025 Volodymyr Pasternak | Курс JavaScript - Домашня робота №7</p>
+            </div>    
+        </footer>
+    </div>
+    <script>"use strict"
+        const result = document.querySelector('.result')
+        if (confirm('Почати тестування?')) {
+            // 1. Вводимо необхідні дані
+            const battleFieldSize = parseInt(prompt('Введіть кількість клітинок поля:', 10))
+            const shipsQuantity = parseInt(prompt('Введіть кількість кораблів:', 2))
+            const getBattleField = field => Array.from({ length: field }, () => 0)
+            const battleField = getBattleField(battleFieldSize)
+            // console.log(battleField)
+            function putShips(ships, field) {
+               while (ships>0) {
+                let i = Math.floor(Math.random()*field.length)
+                if (field[i] === 0) {
+                    field[i] = 1
+                }
+                ships--
+               }
+               return field
+            }
+            putShips(shipsQuantity, battleField)
+            //console.log(putShips(shipsQuantity, battleField))
+            //2. Знаходимо результат
+            function shotShips(ships, field) {
+                while (ships>0) {
+                    let shot = parseInt(prompt('Вкажіть позицію пострілу: '))
+                    if (field[shot] === 1) {
+                        alert('Вітаю! Постріл влучний')
+                        field[shot] = 0
+                        ships--
+                    } else alert('Мимо')
+                    if (ships === 0) {
+                        alert('Перемога!!!')
+                    }
+                }
+            }
+            shotShips(shipsQuantity, battleField)
+            
+            // 3. Виводимо результат
+            // result.innerHTML =(`${showBanner(imageIndex, title, link)}`)
+        }
+    </script>
+</body>
+</html>

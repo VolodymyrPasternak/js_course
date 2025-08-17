@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <title>ДЗ_8</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header class="header">
+            <div class="header__container">
+                <img src="img/javascript-seeklogo.svg" alt="JavaScript Logo" class="header__logo" />
+                <h1 class="header__title">Курс JavaScript - Домашня робота №8</h1>
+            </div></header>
+        <main class="page">
+             <div class="page__container">
+                <h2 class="page__title">ДЗ Функції > Задача 5</h2>
+                <ul class="page__list list">
+                    <li class="list__item">
+                        <p class="list_text">Дано послідовність оцінок учня. Підрахувати кількість:
+                                <ol>
+                                    <li>двійок</li>
+                                    <li>кількість хороших оцінок (добре, відмінно);</li>
+                                    <li>кількість оцінок, які нижче середнього.</li>
+                                </ol> 
+                        </p>
+                    </li>  
+                    <li class="list__item">
+                        <h3 class="list__title">Розв'язок</h3>
+                        <p class="list__text result"></p>
+                    </li>
+                </ul>
+            </div>
+        </main>
+        <footer class="footer">
+            <div class="footer__container">
+                <p>© 2025 Volodymyr Pasternak | Курс JavaScript - Домашня робота №8</p>
+            </div>    
+        </footer>
+    </div>
+    <script>"use strict"
+        const result = document.querySelector('.result')
+        if (confirm('Почати тестування?')) {
+            // 1. Вводимо необхідні дані
+            const subjectQuantity = parseInt(prompt('Введіть кількість предметів: ', '10'))
+            const scoresList = scoresListGenerator(subjectQuantity)
+            function scoresListGenerator(subjectQuantity) {
+                const scores = []
+                for (let i = 0; i < subjectQuantity; i++) {
+                    scores.push(2+Math.floor(Math.random()*(5-2+1)))
+                }
+                return scores
+            }
+        
+            // 2. Знаходимо результат
+            function badScoresQuantity (scoresList) {
+                let counter = 0
+                for (let i = 0; i < scoresList.length; i++) {
+                    if (scoresList[i] === 2) counter++
+                }
+                return counter
+            }
+            function numberOfGood(scoresList) {
+                let counter = 0
+                for (let i = 0; i < scoresList.length; i++) {
+                    if (scoresList[i] === 5 || scoresList[i] === 4) counter++
+                }
+                return counter
+            }
+            function numberOfBad(scoresList) {
+                let counter = 0
+                for (let i = 0; i < scoresList.length; i++) {
+                    if (scoresList[i] === 2 || scoresList[i] === 3) counter++
+                }
+                return counter
+            }
+        
+            // 3. Виводимо результат
+            result.innerHTML =(`послідовність оцінок учня: ${scoresList}<br>
+                            двійок: ${badScoresQuantity (scoresList)}<br>
+                            кількість хороших оцінок (добре, відмінно): ${numberOfGood(scoresList)}<br>
+                            оцінок, які нижче середнього(2,3): ${numberOfBad(scoresList)}`)
+        }
+    </script>
+</body>
+</html>
